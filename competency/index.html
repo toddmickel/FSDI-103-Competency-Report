@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Link vs Dr. Robotnik</title>
+</head>
+<body>
+    <div id="header"><h1>Link vs Dr. Robotnik</h1></div>
+    <div id="game-intro">
+        <h1>Link vs Dr. Robotnik</h1>
+        <h2>FSDI 103 Competency Report</h2>
+        <h3>By Todd Mickel, Cohort 18</h3>
+        <p>Welcome to my Link vs Dr. Robotnik activity.  This isn't really a game, per se, as there is no objective
+            and no way for the player to 'win' or 'lose.'  This is intended to display my grasp of the basic concepts
+            of HTML, CSS, and JavaScript.  It serves as my Competency Report for FSDI 103 at San Diego Global Knowledge 
+            University.
+        </p>
+        <p>I created two versions of this activity:
+            <ul>
+                <li>Version 1 meets the requirements of the FSDI 103 assignment.  You have the option of attacking with 
+                    either Link or Dr. Robotnik.  The activity will keep track of each character's hit points and 
+                    display a 'game over' screen when one of them runs out of hit points.  You will then have a chance 
+                    to reset the activity and try it again.
+                </li>
+                <li>I decided to try to change the parameters up a bit for Version 2.  This one is a little more like a game.  
+                    When Dr. Robotnik appears, the 'Attack with Link' button will appear at a random spot along the bottom of 
+                    the game and you will have a short period of time to click the button.  If you don't, Dr. Robotnik will 
+                    attack Link.
+                </li>
+            </ul> 
+        </p>
+        <p>I hope you enjoy this project!  Please feel free to provide feedback to me at 
+            <a href="mailto:todd@toddmickel.com>">todd@toddmickel.com</a>.
+        </p>
+    </div>
+
+    <div id="start-buttons">
+        <button onclick="startGame('1')">Start Version 1</button>
+        <button onclick="startGame('2')">Start Version 2</button>
+    </div>
+
+     <div id="copyright">   
+        <p>
+            I do not own the copyrights to any of the images used in this project.  They are being used, without
+            permission, under the Fair Use doctrine of U.S. copyright law.  I'm not a lawyer, so if you are the 
+            copyright owner of any of these images and feel they're being used incorrectly, please send me an 
+            email at <a href="mailto:todd@toddmickel.com">todd@toddmickel.com</a> and I will remove them.
+        </p>
+    </div>
+    <div id="game-container">
+        <div id="points-container">
+            <p id="gg-hp"></p>
+            <p id="bg-hp"></p>
+        </div>
+        <div class="char-container">
+            <div id="win">
+                <div id="gg-win">
+                    <h1>Link has won!</h1>
+                    <p id="gg-txt"></p>
+                </div>
+                <div id="bg-win">
+                    <h1>Dr. Robotnik has won!</h1>
+                    <p id="bg-txt"></p>
+                </div>
+            </div>
+            <img id="char" src="img/char.gif" alt="">
+            <img id="expl" src="img/boom.png" alt="">
+            <img id="baddie" src="img/baddie.png" alt="">
+
+        </div>
+        <div class="buttons-container">
+            <button id="gg-at-btn" onclick="ggAttack();">Attack with Link</button>
+            <button id="bg-at-btn" onclick="bgAttack();">Attack with Dr. Robotnik</button>
+            <button id="reset-btn" onclick="restart();">Restart Game</button>
+            <button id="return-btn" onclick="returnHome();">Return Home</button>
+        </div>
+    </div>
+
+</body>
+</html>

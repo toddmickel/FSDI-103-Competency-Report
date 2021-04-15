@@ -1,0 +1,166 @@
+:root {
+    --ggColor: rgba(13, 133, 93, 0.6);
+    --bgColor: rgba(133, 13, 13, 0.6);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color:rgb(243, 243, 243);
+}
+
+#game-intro {
+    display:block;
+}
+
+#game-intro h1 {
+    font-size:2.5rem;
+}
+
+#game-intro h1, h2, h3 {
+    text-align:center;
+    margin:0;
+}
+
+#game-intro p, ul, #copyright {
+    margin: 2rem 4rem 0 4rem;
+}
+
+#start-buttons {
+    display:flex;
+    justify-content: center;
+    margin:2rem;
+}
+#start-buttons button {
+    margin-right:5rem;
+    font-weight: 700;
+    width:10rem;
+    height:3rem;
+    background-color:ivory;
+    font-size: 1rem;
+}
+
+#header {
+    width:672px;
+    text-align: center;
+    background: rgb(54, 100, 129);
+    display:none;
+    /* set display to block with JS when the v1 or v2 button is pressed */
+}
+
+#header h1 {
+    margin:0;
+    padding:.5rem;
+    color:rgb(221, 221, 221);
+}
+
+#game-container {
+    margin-top:0;
+    display: none;
+    /* set display to flex with JavaScript when the v1 or v2 button is pressed */
+    flex-direction: column;
+    background-image: url(img/bg.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 672px;
+    height: 431px;
+}
+
+#points-container {
+    display: flex;
+    height:10%;
+    justify-content: space-around;
+    background-color: rgba(54, 54, 54, 0.5);
+}
+.char-container {
+    display:flex;
+    height:80%;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+}
+
+.buttons-container {
+    display:flex;
+    height:10%;
+    justify-content:space-around;
+}
+
+.buttons-container button {
+    margin-top: 1rem;
+    font-size:1.3rem;
+    padding:.5rem 1rem;
+    height:2.5rem;
+    display:none;
+}
+
+#gg-at-btn {
+    background-color: var(--ggColor);
+    color:white;
+}
+
+#bg-at-btn {
+    background-color: var(--bgColor);
+    color:white;
+}
+
+#char {
+    height:15rem;
+
+}
+
+#expl {
+    display: none;
+}
+
+#baddie {
+    height:20rem;
+    display: none;
+    margin-right:5rem;
+}
+
+
+
+#points-container p {
+    margin:0;
+    color:white;
+    font-size:2rem;
+}
+
+#reset-btn {
+    display:none;
+}
+
+#win {
+    display:none;
+    align-self:center;
+}
+
+#gg-win {
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    align-items: center;
+    justify-content: center;
+    margin-top:0;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: var(--ggColor);
+    color:white;
+    text-align: center;
+    border:2px solid black;
+}
+
+#bg-win {
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    align-items: center;
+    justify-content: center;
+    margin-top:0;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: var(--bgColor);
+    color:white;
+    text-align: center;
+    border:2px solid black;
+}
