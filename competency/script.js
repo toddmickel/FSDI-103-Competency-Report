@@ -106,8 +106,7 @@ function randBtn() {
 function randPos() {
     let xPos = (Math.random() * 600).toString();
     let yPos = (Math.random() * 350).toString();
-    console.log(`${xPos}px, -${yPos}px`)
-    return (`${xPos}px, -${yPos}px`)
+    return (`${xPos}px, -${yPos}px`);
 }
 // Since there are several calls to hide and show the attack buttons,
 // I made functions to shorten the code and reduce the chance of typos.
@@ -117,8 +116,8 @@ function hideButtons() {
 }
 
 function showButtons() {
-    ggAtBtnDoc.style.display='inherit';
-    bgAtBtnDoc.style.display='inherit';
+    ggAtBtnDoc.style.display='flex';
+    bgAtBtnDoc.style.display='flex';
 }
 
 // Random timer generator.  By default set to 1-3 seconds, but you
@@ -197,6 +196,9 @@ function restart() {
 }
 
 function returnHome() {
+    ggAtBtnDoc.style.removeProperty('position');
+    ggAtBtnDoc.style.removeProperty('left');
+    ggAtBtnDoc.style.removeProperty('transform');
     winDoc.style.display='none';
     ggPoints = 100;
     bgPoints = 100;
