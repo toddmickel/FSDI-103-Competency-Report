@@ -2,6 +2,10 @@ let ggPoints;
 let bgPoints;
 let vers;
 var bgHit;
+var level = '1';
+var transLvl = '1000';
+var music = new Audio('snd/advmusic.mp3');
+music.loop = true;
 const attackPoints = 10;  // You can change the value of each attack here
 const ggStartPts = 100;
 const bgStartPts = 100;
@@ -28,10 +32,11 @@ const ggTxtDoc = document.getElementById('gg-txt');
 const bgTxtDoc = document.getElementById('bg-txt');
 
 function startGame(version) {
-    hideWeb();
-    initialize();
     vers=version;
-    display();
+    hideWeb();
+    if (initialize()) {
+        display();
+    }
 }
 
 // When link attacks Dr. Robotnik:
@@ -40,6 +45,8 @@ function ggAttack() {
         bgPtsDoc.innerHTML = `HP: 0`;
         gameOver(ggPoints, bgPoints);
     } else {
+        var audio = new Audio('snd/sword.mp3');
+        audio.play();
         bgPoints -= attackPoints;
         hit('bg');
     }
@@ -52,6 +59,8 @@ function bgAttack() {
         ggPtsDoc.innerHTML = `HP: 0`;
         gameOver(ggPoints, bgPoints);
     } else {
+        var audio = new Audio('snd/laser.mp3');
+        audio.play();
         ggPoints -= attackPoints;
         hit('gg');
     }
@@ -61,6 +70,7 @@ function bgAttack() {
 function display() {
     ggPtsDoc.innerHTML = `HP: ${ggPoints}`;
     bgPtsDoc.innerHTML = `HP: ${bgPoints}`;
+    music.volume=1;
     animate();
 }
 
@@ -72,9 +82,12 @@ function animate() {
     baddieDoc.style.display='none';
     bgImgDoc.style.backgroundImage='url("img/bg.gif")';
     setTimeout( function() {
+            music.volume = 0.5;
             bgImgDoc.style.backgroundImage='url("img/bgnoanim.gif")';
             charDoc.src='img/charnoanim.gif';
             explDoc.style.display='inherit';
+            var audio = new Audio('snd/explosion.mp3');
+            audio.play();
             setTimeout( function() {
                 explDoc.style.display = 'none';
                 baddieDoc.style.display = 'block';
@@ -84,7 +97,7 @@ function animate() {
                     randBtn();
                     bgHit = setTimeout(function() {
                         bgAttack();
-                    }, 1000);
+                    }, transLvl);
                     ggAtBtnDoc.onclick = function() {
                         clearTimeout(bgHit);
                         ggAttack();
@@ -188,6 +201,30 @@ function initialize() {
     returnBtnDoc.style.display='none';
     charDoc.style.display='inherit';
     baddieDoc.style.display='inherit';
+    if (vers === '2') {
+        level = prompt('Select a level.  1=Easy, 2=Medium, 3=Hard.');
+        switch(level) {
+            case '1':
+                transLvl = 1000;
+                break;
+            case '2':
+                transLvl = 850;
+                break;
+            case '3':
+                transLvl = 750;
+                break;
+            case 'IMPOSSIBLE':
+                transLvl = 600;
+                break;
+            default:
+                alert(`${level} is not a valid option!`);
+                returnHome();
+                return(false);
+                break;
+        }
+    }   
+    music.play();
+    return true;
 }
 // Resets the game after one player wins
 function restart() {
@@ -207,4 +244,6 @@ function returnHome() {
     introDoc.style.display='block';
     startBtnDoc.style.display='flex';
     copyrightDoc.style.display='block';
+    music.pause();
+    music.currentTime=0;
 }
